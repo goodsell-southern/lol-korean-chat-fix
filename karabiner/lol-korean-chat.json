@@ -2,7 +2,7 @@
     "title": "LoL in-game Hangul chat fix",
     "rules": [
         {
-            "description": "LoL in-game chat: commit Hangul composition before digits/symbols (space, backspace, key)",
+            "description": "LoL in-game chat: commit Hangul composition before digits/symbols (space, backspace, key) while chat is open",
             "manipulators": [
                 {
                     "type": "basic",
@@ -12,6 +12,237 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        }
+                    ],
+                    "from": {
+                        "key_code": "return_or_enter",
+                        "modifiers": {
+                            "optional": [
+                                "shift",
+                                "caps_lock"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "set_variable": {
+                                "name": "lol_chat_open",
+                                "value": 0
+                            }
+                        },
+                        {
+                            "key_code": "return_or_enter"
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers": [
+                                "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
+                            ]
+                        }
+                    ],
+                    "from": {
+                        "key_code": "return_or_enter",
+                        "modifiers": {
+                            "optional": [
+                                "shift",
+                                "caps_lock"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "set_variable": {
+                                "name": "lol_chat_open",
+                                "value": 1
+                            }
+                        },
+                        {
+                            "key_code": "return_or_enter"
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers": [
+                                "^com\\.riotgames\\.LeagueofLegends\\.LeagueClient(Ux)?$"
+                            ]
+                        }
+                    ],
+                    "from": {
+                        "key_code": "return_or_enter",
+                        "modifiers": {
+                            "optional": [
+                                "shift",
+                                "caps_lock"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "set_variable": {
+                                "name": "lol_chat_open",
+                                "value": 0
+                            }
+                        },
+                        {
+                            "key_code": "return_or_enter"
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers": [
+                                "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
+                            ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        }
+                    ],
+                    "from": {
+                        "key_code": "keypad_enter",
+                        "modifiers": {
+                            "optional": [
+                                "shift",
+                                "caps_lock"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "set_variable": {
+                                "name": "lol_chat_open",
+                                "value": 0
+                            }
+                        },
+                        {
+                            "key_code": "keypad_enter"
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers": [
+                                "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
+                            ]
+                        }
+                    ],
+                    "from": {
+                        "key_code": "keypad_enter",
+                        "modifiers": {
+                            "optional": [
+                                "shift",
+                                "caps_lock"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "set_variable": {
+                                "name": "lol_chat_open",
+                                "value": 1
+                            }
+                        },
+                        {
+                            "key_code": "keypad_enter"
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers": [
+                                "^com\\.riotgames\\.LeagueofLegends\\.LeagueClient(Ux)?$"
+                            ]
+                        }
+                    ],
+                    "from": {
+                        "key_code": "keypad_enter",
+                        "modifiers": {
+                            "optional": [
+                                "shift",
+                                "caps_lock"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "set_variable": {
+                                "name": "lol_chat_open",
+                                "value": 0
+                            }
+                        },
+                        {
+                            "key_code": "keypad_enter"
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers": [
+                                "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
+                            ]
+                        }
+                    ],
+                    "from": {
+                        "key_code": "escape",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "set_variable": {
+                                "name": "lol_chat_open",
+                                "value": 0
+                            }
+                        },
+                        {
+                            "key_code": "escape"
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers": [
+                                "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
+                            ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -58,6 +289,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -94,6 +330,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -140,6 +381,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -176,6 +422,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -222,6 +473,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -258,6 +514,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -304,6 +565,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -340,6 +606,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -386,6 +657,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -422,6 +698,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -468,6 +749,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -504,6 +790,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -550,6 +841,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -586,6 +882,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -632,6 +933,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -668,6 +974,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -714,6 +1025,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -750,6 +1066,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -796,6 +1117,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -832,6 +1158,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -878,6 +1209,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -914,6 +1250,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -960,6 +1301,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -996,6 +1342,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -1042,6 +1393,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -1078,6 +1434,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -1124,6 +1485,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -1160,6 +1526,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -1206,6 +1577,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -1242,6 +1618,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -1288,6 +1669,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -1324,6 +1710,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -1370,6 +1761,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -1406,6 +1802,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -1452,6 +1853,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -1488,6 +1894,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -1534,6 +1945,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -1570,6 +1986,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -1616,6 +2037,11 @@
                             ]
                         },
                         {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
+                        },
+                        {
                             "type": "input_source_if",
                             "input_sources": [
                                 {
@@ -1652,6 +2078,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
@@ -1696,6 +2127,11 @@
                             "bundle_identifiers": [
                                 "^com\\.riotgames\\.LeagueofLegends\\.GameClient$"
                             ]
+                        },
+                        {
+                            "type": "variable_if",
+                            "name": "lol_chat_open",
+                            "value": 1
                         },
                         {
                             "type": "input_source_if",
